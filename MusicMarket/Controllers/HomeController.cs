@@ -1,16 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EfCore2C.Models;
+using Microsoft.AspNetCore.Mvc;
 using MusicMarket.Models;
+using System.Data.Entity;
 using System.Diagnostics;
 
 namespace MusicMarket.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly DataContext _dataContext;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(DataContext context)
         {
-            _logger = logger;
+            this._dataContext = context;
         }
 
         public IActionResult Index()
