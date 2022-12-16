@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using EfCore2C.Models;
+using Microsoft.AspNetCore.Identity;
+using MusicMarket.Models;
+using MusicMarket.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DataContext>(
     o => o.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddDefaultIdentity<MusicMarketUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<DataContext>();
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
@@ -22,11 +29,14 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 app.Run();

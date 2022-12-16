@@ -1,7 +1,6 @@
 ﻿using EfCore2C.Models;
 using Microsoft.AspNetCore.Mvc;
 using MusicMarket.Models;
-using System.Data.Entity;
 using System.Diagnostics;
 
 namespace MusicMarket.Controllers
