@@ -1,7 +1,10 @@
-﻿namespace MusicMarket.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MusicMarket.Models
 {
     public class Product
     {
+        [Key]
         public int Id { get; set; }
         public int CategoryId { get; set; }
         public int BrandId { get; set; }
@@ -15,6 +18,7 @@
         public Category Category { get; set; }
         public Brand Brand { get; set; }
         public ICollection<Rating> Ratings { get; set; }
+        public ICollection<OrderDetail> OrderDetails { get; set; }
 
     }
 }
