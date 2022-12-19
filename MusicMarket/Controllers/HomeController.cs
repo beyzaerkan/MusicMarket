@@ -16,6 +16,13 @@ namespace MusicMarket.Controllers
 
         public IActionResult Index()
         {
+            var products = _dataContext.Products.ToList();
+            return View(products);
+        }
+
+
+        public IActionResult Contact()
+        {
             return View();
         }
 
