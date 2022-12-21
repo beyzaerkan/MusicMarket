@@ -111,44 +111,11 @@
 							</div>
 						</div>
 						<div class="product-content">
-							<h4><a href="product-single.html">@item.Title</a></h4>
+							<h4><a asp-controller="Shop" asp-action="Details" asp-route-id="@item.Id">@item.Title</a></h4>
 							<p class="price">$@item.Price</p>
 						</div>
 					</div>
 				</div>
-
-
-				<!-- Modal -->
-				<div class="modal product-modal fade" id="product-modal">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<i class="tf-ion-close"></i>
-					</button>
-					<div class="modal-dialog " role="document">
-						<div class="modal-content">
-							<div class="modal-body">
-								<div class="row">
-									<div class="col-md-8 col-sm-6 col-xs-12">
-										<div class="modal-image">
-											<img class="img-responsive" src="@item.ImageUrl" alt="product-img" />
-										</div>
-									</div>
-									<div class="col-md-4 col-sm-6 col-xs-12">
-										<div class="product-short-details">
-											<h2 class="product-title">@item.Title</h2>
-											<p class="product-price">$@item.Price</p>
-											<p class="product-short-description">
-												@item.Description
-											</p>
-											<a class="btn btn-main">Add To Cart</a>
-											<a class="btn btn-transparent">View Product Details</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div><!-- /.modal -->
-
 			</div>
 		</div>
 	</section>

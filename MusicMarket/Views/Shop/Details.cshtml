@@ -1,0 +1,105 @@
+﻿@model MusicMarket.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="single-product">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<ol class="breadcrumb">
+					<li><a asp-controller="Home" asp-action="Index">Home</a></li>
+					<li><a asp-controller="Shop" asp-action="Index">Shop</a></li>
+					<li class="active">Single Product</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="row mt-20">
+			<div class="col-md-5">
+				<div class="single-product-slider">
+					<div id='carousel-custom' class='carousel slide' data-ride='carousel'>
+						<div class='carousel-outer'>
+							<div class='carousel-inner '>
+								<div class='item active'>
+									<img src=@Model.ImageUrl alt=@Model.Title data-zoom-image=@Model.ImageUrl />
+								</div>								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-7">
+				<div class="single-product-details">
+					<h2>@Model.Title</h2>
+					<p class="product-price">$@Model.Price
+					
+					<p class="product-description mt-20">
+						 @Model.Description
+					</p>
+					<div class="product-quantity">
+						<span>Quantity:</span>
+						<div class="product-quantity-slider">
+							<input id="product-quantity" type="text" value="0" name="product-quantity">
+						</div>
+					</div>
+					<div class="product-category">
+						<span>Categories:</span>
+						<ul>
+							<li><a>Products</a></li>
+							<li><a>@Model.Category.Name</a></li>
+						</ul>
+					</div>
+					<button type="submit" class="btn btn-main mt-20" asp-controller="" asp-action="AddToCart" asp-route-id=@Model.Id>Add To Cart</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="tabCommon mt-20">
+					<ul class="nav nav-tabs">
+						<li class="active"><a data-toggle="tab" href="#details" aria-expanded="true">Details</a></li>
+						<li class=""><a data-toggle="tab" href="#reviews" aria-expanded="false">Reviews (3)</a></li>
+					</ul>
+					<div class="tab-content patternbg">
+						<div id="details" class="tab-pane fade active in">
+							<h4>Product Description</h4>
+							<p>@Model.Description</p>
+						</div>
+						<div id="reviews" class="tab-pane fade">
+							<div class="post-comments">
+						    	<ul class="media-list comments-list m-bot-50 clearlist">
+								    <li class="media">
+
+								        <a class="pull-left" href="#!">
+								            <img class="media-object comment-avatar" src="" alt="" width="50" height="50" />
+								        </a>
+
+								        <div class="media-body">
+								            <div class="comment-info">
+								                <h4 class="comment-author">
+								                    <a href="#!">Jonathon Andrew</a>
+								                	
+								                </h4>
+								                <time datetime="2022-04-06T13:53">July 02, 2022, at 11:34</time>
+								                <a class="comment-button" href="#!"><i class="tf-ion-chatbubbles"></i>Reply</a>
+								            </div>
+
+								            <p>
+								                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at magna ut ante eleifend eleifend.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod laborum minima, reprehenderit laboriosam officiis praesentium? Impedit minus provident assumenda quae.
+								            </p>
+								        </div>
+
+								    </li>
+							</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

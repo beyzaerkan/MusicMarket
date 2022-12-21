@@ -36,7 +36,7 @@
 					<ul class="top-menu text-right list-inline">
 						
 						<li class="dropdown cart-nav dropdown-slide">
-								<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy"><i class="tf-ion-android-cart"></i>Cart</a>
+								<a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index"><i class="tf-ion-android-cart"></i>Cart</a>
 						</li><!-- / Cart -->
 						<!-- Search -->
 						<li class="dropdown search dropdown-slide">
@@ -86,12 +86,13 @@
 								<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
 						</li>
 							<li class="dropdown dropdown-slide">
-								<a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
+								<a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
 								   role="button" aria-haspopup="true" aria-expanded="false">
 									Shop <span class="tf-ion-ios-arrow-down"></span>
 								</a>
 								<ul class="dropdown-menu">
-									<li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Guitars</a></li>
+									<li><a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="Index">All</a></li>
+									<li><a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="Category" asp-route-id="1">Guitars</a></li>
 									<li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Pianos</a></li>
 									<li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Bowed Strings</a></li>
 									<li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Drums - Percussions</a></li>
