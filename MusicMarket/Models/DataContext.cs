@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MusicMarket.Areas.Identity.Data;
 using MusicMarket.Models;
 
-namespace EfCore2C.Models
+namespace MusicMarket.Models
 {
     public class DataContext : IdentityDbContext<MusicMarketUser>
     {

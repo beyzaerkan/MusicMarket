@@ -79,7 +79,6 @@
 	</div>
 </section>
 
-@foreach (var item in Model){
 	<section class="products section bg-gray">
 		<div class="container">
 			<div class="row">
@@ -88,11 +87,11 @@
 				</div>
 			</div>
 			<div class="row">
-
+			@foreach (var item in Model)
+			{
 				<div class="col-md-4">
 					<div class="product-item">
 						<div class="product-thumb">
-							<span class="bage">Sale</span>
 							<img class="img-responsive" src="@item.ImageUrl" alt="product-img" />
 							<div class="preview-meta">
 								<ul>
@@ -116,10 +115,10 @@
 						</div>
 					</div>
 				</div>
+			}
 			</div>
 		</div>
 	</section>
-}
 
 <!--
 Start Call To Action

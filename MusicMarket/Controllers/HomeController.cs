@@ -1,5 +1,4 @@
-﻿using EfCore2C.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MusicMarket.Models;
 using System.Diagnostics;
 

@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using EfCore2C.Models;
 using Microsoft.AspNetCore.Identity;
 using MusicMarket.Models;
 using MusicMarket.Areas.Identity.Data;
@@ -16,6 +15,16 @@ builder.Services.AddDefaultIdentity<MusicMarketUser>(options => options.SignIn.R
     .AddEntityFrameworkStores<DataContext>();
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(10);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+builder.Services.AddHttpContextAccessor();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,6 +38,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseSession();
 
 app.UseRouting();
 app.UseAuthentication();;

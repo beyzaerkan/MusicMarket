@@ -1,0 +1,100 @@
+﻿@model IEnumerable<MusicMarket.Models.CartItem>
+
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content">
+                    <h1 class="page-name">Cart</h1>
+                    <ol class="breadcrumb">
+                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="active">Cart</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@if (ViewBag.cart.Count == 0)
+{
+    <section class="empty-cart page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="block text-center">
+                        <i class="tf-ion-ios-cart-outline"></i>
+                        <h2 class="text-center">Your cart is currently empty.</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, sed.</p>
+                        <a asp-controller="Shop" asp-action="Index" class="btn btn-main mt-20">Return to shop</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}else{
+    <div class="page-wrapper">
+        <div class="cart shopping">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="block">
+                            <div class="product-list">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="">Item Name</th>
+                                            <th class="">Item Price</th>
+                                            <th class="">Quantity</th>
+                                            <th class="">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tbody>
+                                            <tr class="">
+                                                <td class="">
+                                                    <div class="product-info">
+                                                        <img width="80" src=@item.Product.ImageUrl alt="" />
+                                                        <a href="#!">@item.Product.Title</a>
+                                                    </div>
+                                                </td>
+                                                <td class="">$@item.Product.Price</td>
+                                                <td class="">@item.Quantity</td>
+                                                <td class="">
+                                                    <a class="product-remove" asp-action="Remove" asp-controller="Cart" asp-route-id=@item.Product.Id> Remove</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-md-offset-2 pull-right">
+                        <div class="product-checkout-details">
+                            <div class="block">
+                                <h4 class="widget-title">Order Summary</h4>
+                                <ul class="summary-prices">
+                                    <li>
+                                        <span>Subtotal:</span>
+                                        <span class="price">$@ViewBag.total</span>
+                                    </li>
+                                    <li>
+                                        <span>Shipping:</span>
+                                        <span>Free</span>
+                                    </li>
+                                </ul>
+                                <div class="summary-total">
+                                    <span>Total</span>
+                                    <span>$@ViewBag.total</span>
+                                </div>
+                                <a asp-action="Cart" asp-controller="Buy" class="btn btn-main pull-right">Buy</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
