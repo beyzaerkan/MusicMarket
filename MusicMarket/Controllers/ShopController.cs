@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MusicMarket.Models;
 using System.Drawing.Printing;
+using MusicMarket.Data;
 
 namespace MusicMarket.Controllers
 {

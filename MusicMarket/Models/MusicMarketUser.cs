@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace MusicMarket.Areas.Identity.Data;
+namespace MusicMarket.Models;
 
 // Add profile data for application users by adding properties to the MusicMarketUser class
 public class MusicMarketUser : IdentityUser
