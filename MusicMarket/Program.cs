@@ -1,37 +1,27 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Cors.Infrastructure;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using MusicMarket.Data;
-using System;
+using Microsoft.AspNetCore.Identity;
 using MusicMarket.Models;
+using Microsoft.Extensions.FileProviders;
+using MusicMarket.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<DataContext>(
+    o => o.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddIdentity<MusicMarketUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddEntityFrameworkStores<DataContext>();
+builder.Services.AddControllersWithViews();
 
-// DbContext Configuration
-builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(
-    builder.Configuration.GetConnectionString("DefaultConnection")
-    ));
-
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-
-//Authentication and authorization
-builder.Services.AddIdentity<MusicMarketUser, IdentityRole>().AddEntityFrameworkStores<DataContext>();
-builder.Services.AddMemoryCache();
+builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(10);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-});
+builder.Services.AddHealthChecks();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -45,14 +35,11 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
-app.UseRouting();
 app.UseSession();
 
-//Authentication & Authorization
-app.UseAuthentication();
+app.UseRouting();
+app.UseAuthentication(); ;
 app.UseAuthorization();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

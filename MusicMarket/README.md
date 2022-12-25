@@ -1,35 +1,45 @@
-﻿Dotnet Core, Entity Framework, PostgreSQL, BootStrap gibi teknolojiler kullanılarak geliştirilen, Sakarya Üniversitesi Bilgisayar Mühendisliği Web Programlama dersi ödevi çerçevesinde yapılan şirket satış yazılımıdır.
+﻿# Music Market
+Enstrüman satışı yapılan, kullanıcıların siteye kayıt olup giriş yapabildiği, müşteri ise ürün listeleyebildiği sepete ürün atabildiği; admin ise ürünler ekleme, silme ve güncelleme işlemlerini yapabildiği bir e-ticaret web uygulamasıdır. 
 
-#Hazılayanlar
-
+# Hazırlayanlar
 B201210056 Kemal Aydın
 B201210038 Beyza Erkan
 
-#İçindekiler
-    Kurulum
-    Lisans
-    Dosya Yapısı
+# Kullanılan Teknolojiler
+    - Asp.Net Core 6 MVC
+    - PostgreSQL
+    - Entity Framework Core ORM
+    - Bootstrap Tema
+    - HTML5, CSS3, Javascript
 
-#Kurulum
-
-Projeyi İndirme
+# Kurulum
+## Projeyi İndirme
 
 Projeyi lokalinize "MusicMarket" adıyla çekmek için:
 
-git clone https://github.com/beyzaerkan/MusicMarket.git
+```bash
+git clone https://github.com/beyzaerkan/MusicMarket.git`
+```
 
 MusicMarket Projenin içine girmek için:
-
+```bash
 cd MusicMarket
-.sln dosyası sayesinde proje Visual Studio destekleyen ortamlarda çalıştırılabilir. Linux üzerindeyseniz cd WebApplication2 komutu ile ana koda girmeniz ve ondan sonra aşağıdaki işlemleri yapmanız gerekmektedir.
-PostgreSQL üzerinde webdb adında bir veritabanı oluşturun ve ardından WebApplication2/appsettings.json dosyasındaki ConnectionStrings key'i içindeki DefaultConnection key'inin değerinde bulunan User ID kısmına PostgreSQL kullanıcı isminizi ve Password kısmına şifrenizi yazınız.
+```
 
-Veritabanı migrasyonu
+.sln dosyası sayesinde proje Visual Studio destekleyen ortamlarda çalıştırılabilir. Linux üzerindeyseniz `cd MusicMarket` komutu ile ana koda girmeniz ve daha sonra aşağıdaki işlemleri yapmanız gerekmektedir.
+
+PostgreSQL üzerinde `musicmarket` adında bir veritabanı oluşturun ve ardından MusicMarket/appsettings.json dosyasındaki `ConnectionStrings` key'i içindeki `DefaultConnection` key'inin değerinde bulunan User ID kısmına PostgreSQL kullanıcı isminizi ve Password kısmına şifrenizi yazınız.
+
+## Veritabanı migrasyonu
+#### Terminalden çalıştırmak için
+    dotnet ef database update
 
 Entity Framework'un kurulu olduğunu varsayarak tabloları oluşturmak için
-
-# Terminalden çalıştırmak için
-    dotnet ef database update
-# Package Manager'dan çalıştırmak için
+#### Package Manager'dan çalıştırmak için
     Update-Database
-    Ayağa kaldırma
+    
+## Katkıda Bulunanlar
+
+<a href = "https://github.com/beyzaerkan/MusicMarket/graphs/contributors">
+  <img src = "https://contrib.rocks/image?repo=beyzaerkan/MusicMarket"/>
+</a>

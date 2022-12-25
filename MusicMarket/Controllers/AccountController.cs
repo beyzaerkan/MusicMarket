@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MusicMarket.Controllers
 {
@@ -81,7 +82,7 @@ namespace MusicMarket.Controllers
             if (newUserResponse.Succeeded)
                 await _userManager.AddToRoleAsync(newUser, UserRoles.User);
 
-            return View("RegisterCompleted");
+            return View("Login");
         }
 
         [HttpPost]
