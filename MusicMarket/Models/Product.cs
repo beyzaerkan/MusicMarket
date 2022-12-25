@@ -7,7 +7,6 @@ namespace MusicMarket.Models
         [Key]
         public int Id { get; set; }
         public int CategoryId { get; set; }
-        public int BrandId { get; set; }
 
         public string Title { get; set; }
         public double Price { get; set; }
@@ -15,9 +14,8 @@ namespace MusicMarket.Models
         public string Description { get; set; }
         public int Stock { get; set; }
         
-        public Category Category { get; set; }
-        public Brand Brand { get; set; }
-        public ICollection<OrderDetail> OrderDetails { get; set; }
+        public Category? Category { get; set; }
+        public ICollection<OrderDetail>? OrderDetails { get; set; }
 
     }
 }

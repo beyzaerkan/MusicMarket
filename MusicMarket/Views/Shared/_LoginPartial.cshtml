@@ -1,12 +1,13 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using MusicMarket.Models
 
 @inject SignInManager<MusicMarketUser> SignInManager
 @inject UserManager<MusicMarketUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 {
-        <li class="dropdown">
-         <a id="manage" class="nav-link text-dark" asp-controller="Account" asp-action="Profile" title="Manage">Hello @UserManager.GetUserName(User)</a>
+    <li class="dropdown">
+        <a id="manage" class="nav-link text-dark" asp-controller="Account" asp-action="Profile"  title="Manage">Hello @UserManager.GetUserName(User)!</a>
     </li>
     <li class="dropdown">
         <a class="nav-link text-dark" id="logout" asp-controller="Account" asp-action="Logout">Logout</a>
@@ -14,10 +15,10 @@
 }
 else
 {
-    <li class="dropdown ">
-            <a class="nav-link text-dark" id="register" asp-controller="Account" asp-action="Register">Register</a>
+    <li class="dropdown">
+        <a class="nav-link text-dark" id="register" asp-controller="Account" asp-action="Register">Register</a>
     </li>
     <li class="dropdown">
-            <a class="nav-link text-dark" id="login" asp-controller="Account" asp-action="Login">Login</a>
+        <a class="nav-link text-dark" id="login" asp-controller="Account" asp-action="Login">Login</a>
     </li>
 }

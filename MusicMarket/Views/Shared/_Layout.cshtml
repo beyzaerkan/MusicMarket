@@ -93,10 +93,10 @@
 								<ul class="dropdown-menu">
 									<li><a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="Index">All</a></li>
 									<li><a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="Category" asp-route-id="1">Guitars</a></li>
-									<li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Pianos</a></li>
-									<li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Bowed Strings</a></li>
-									<li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Drums - Percussions</a></li>
-									<li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Amp - Effects</a></li>
+									<li><a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="Category" asp-route-id="2">Pianos</a></li>
+									<li><a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="Category" asp-route-id="3">Bowed Strings</a></li>
+									<li><a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="Category" asp-route-id="4">Drums - Percussions</a></li>
+									<li><a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="Category" asp-route-id="5">Amp - Effects</a></li>
 								</ul>
 							</li>
 							<li class="dropdown ">
@@ -108,9 +108,21 @@
 							<li class="dropdown ">
 								<partial name="_LoginPartial" />
 							</li>
-					</ul><!-- / .nav .navbar-nav -->
+							@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+							{
+								<li class="dropdown dropdown-slide">
+									<a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
+									   role="button" aria-haspopup="true" aria-expanded="false">
+										Management <span class="tf-ion-ios-arrow-down"></span>
+									</a>
+									<ul class="dropdown-menu">
+										<li><a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="AdminIndex">Product</a></li>
+									</ul>
+								</li>
+							}
+					</ul>
 				</div>
-			</div><!-- / .container -->
+			</div
 		</nav>
 	</section>
 	</header>

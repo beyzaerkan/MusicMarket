@@ -8,9 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using MusicMarket.Models;
 using System.Drawing.Printing;
 using MusicMarket.Data;
+using Microsoft.AspNetCore.Authorization;
+using MusicMarket.Data.Static;
 
 namespace MusicMarket.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class ShopController : Controller
     {
         private readonly DataContext _context;
@@ -20,14 +23,22 @@ namespace MusicMarket.Controllers
             _context = context;
         }
 
+        public async Task<IActionResult> AdminIndex()
+        {
+            var products = _context.Products.Include(p => p.Category);
+            return View(await products.ToListAsync());
+        }
+
         // GET: Shop
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            var products = _context.Products.Include(p => p.Brand).Include(p => p.Category);
+            var products = _context.Products.Include(p => p.Category);
             return View(await products.ToListAsync());
         }
 
         // GET: Shop/Category/1
+        [AllowAnonymous]
         public async Task<IActionResult> Category(int? id)
         {
             var products = _context.Products.Include(t => t.Category)
@@ -38,6 +49,7 @@ namespace MusicMarket.Controllers
 
 
         // GET: Shop/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Products == null)
@@ -46,7 +58,6 @@ namespace MusicMarket.Controllers
             }
 
             var product = await _context.Products
-                .Include(p => p.Brand)
                 .Include(p => p.Category)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
@@ -60,7 +71,6 @@ namespace MusicMarket.Controllers
         // GET: Shop/Create
         public IActionResult Create()
         {
-            ViewData["BrandId"] = new SelectList(_context.Brands, "Id", "Id");
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
             return View();
         }
@@ -70,7 +80,7 @@ namespace MusicMarket.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CategoryId,BrandId,Title,Price,ImageUrl,Description,Stock")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,CategoryId,Title,Price,ImageUrl,Description,Stock")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +88,6 @@ namespace MusicMarket.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BrandId"] = new SelectList(_context.Brands, "Id", "Id", product.BrandId);
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
             return View(product);
         }
@@ -96,7 +105,6 @@ namespace MusicMarket.Controllers
             {
                 return NotFound();
             }
-            ViewData["BrandId"] = new SelectList(_context.Brands, "Id", "Id", product.BrandId);
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
             return View(product);
         }
@@ -106,7 +114,7 @@ namespace MusicMarket.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CategoryId,BrandId,Title,Price,ImageUrl,Description,Stock")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CategoryId,Title,Price,ImageUrl,Description,Stock")] Product product)
         {
             if (id != product.Id)
             {
@@ -133,7 +141,6 @@ namespace MusicMarket.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BrandId"] = new SelectList(_context.Brands, "Id", "Id", product.BrandId);
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
             return View(product);
         }
@@ -147,7 +154,6 @@ namespace MusicMarket.Controllers
             }
 
             var product = await _context.Products
-                .Include(p => p.Brand)
                 .Include(p => p.Category)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
