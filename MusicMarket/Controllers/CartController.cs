@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.CodeAnalysis;
 using MessagePack;
+using MusicMarket.Data;
 
 namespace MusicMarket.Controllers
 {

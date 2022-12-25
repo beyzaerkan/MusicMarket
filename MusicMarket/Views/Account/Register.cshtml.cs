@@ -18,7 +18,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using MusicMarket.Areas.Identity.Data;
+using MusicMarket.Models;
 
 namespace MusicMarket.Areas.Identity.Pages.Account
 {

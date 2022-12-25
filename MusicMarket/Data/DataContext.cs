@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using MusicMarket.Areas.Identity.Data;
 using MusicMarket.Models;
 
-namespace MusicMarket.Models
+namespace MusicMarket.Data
 {
     public class DataContext : IdentityDbContext<MusicMarketUser>
     {
@@ -15,7 +14,6 @@ namespace MusicMarket.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Brand> Brands { get; set; }
-        public DbSet<Rating> Ratings { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
     }
