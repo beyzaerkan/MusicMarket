@@ -85,11 +85,10 @@ namespace MusicMarket.Controllers
             return View("Login");
         }
 
-        [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         public IActionResult AccessDenied(string ReturnUrl)
