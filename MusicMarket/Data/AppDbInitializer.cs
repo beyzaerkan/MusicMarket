@@ -55,7 +55,7 @@ namespace MusicMarket.Data
                         {
                             CategoryId = 1,
                             Title = "Cort Guitar 1",
-                            Price = 150,
+                            Price = 350,
                             ImageUrl = "https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
                             Description = "The guitar is a fretted musical instrument that typically has six strings. " +
                             "It is usually held flat against the player's body and played by strumming or plucking the strings with the dominant hand," +
@@ -76,12 +76,6 @@ namespace MusicMarket.Data
                         new Product()
                         {
                             CategoryId = 3,
-                            Title = "Bowed Strings1",
-                            Price = 350,
-                            ImageUrl = "https://images.unsplash.com/photo-1603584915335-d612257071b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-                            Description = "Bowed string instruments are a subcategory of string instruments that are played by a bow rubbing the strings. " +
-                            "The bow rubbing the string causes vibration which the instrument emits as sound.",
-                            Stock = 5
                         }
                     });
                     context.SaveChanges();
