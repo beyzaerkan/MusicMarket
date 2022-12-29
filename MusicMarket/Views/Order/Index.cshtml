@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MusicMarket.Models.Order>
+
+<section class="page-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="content">
+					<h1 class="page-name">Dashboard</h1>
+					<ol class="breadcrumb">
+						<li><a asp-controller="Home" asp-action="Index">Home</a></li>
+						<li><a class="active" >Orders</a></li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="user-dashboard page-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="list-inline dashboard-menu text-center">
+					<li><a class="active" asp-controller="Order" asp-action="Index">Orders</a></li>
+					<li><a  asp-controller="Account" asp-action="Profile">Profile Details</a></li>
+				</ul>
+				<div class="dashboard-wrapper user-dashboard">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Order ID</th>
+									<th>Date</th>
+									<th>Items</th>
+									<th>Quantity</th>
+									<th>Price</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach(var order in Model){
+									@foreach(var item in order.OrderDetails){
+										<tr>
+											<td>@item.Order.OrderNumber</td>
+											<td>@item.Order.OrderDate</td>
+											<td>
+												<div class="product-info">
+													<img width="80" src="@item.Product.ImageUrl" alt="@item.Product.Title" />
+													<a href="#!">@item.Product.Title</a>
+												</div>
+											</td>
+											<td>@item.Quantity</td>
+											<td> @item.Price </td>
+										</tr>
+									}
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -6,8 +6,8 @@ namespace MusicMarket.Models
     {
         [Key]
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public int OrderNumber { get; set; }
+        public String UserId { get; set; }
+        public String OrderNumber { get; set; }
         public double Total { get; set; }
         public DateTime OrderDate { get; set; }
 
