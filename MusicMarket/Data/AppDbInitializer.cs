@@ -76,6 +76,12 @@ namespace MusicMarket.Data
                         new Product()
                         {
                             CategoryId = 3,
+                            Title = "Bowed Strings1",
+                            Price = 350,
+                            ImageUrl = "https://images.unsplash.com/photo-1603584915335-d612257071b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+                            Description = "Bowed string instruments are a subcategory of string instruments that are played by a bow rubbing the strings. " +
+                            "The bow rubbing the string causes vibration which the instrument emits as sound.",
+                            Stock = 5
                         }
                     });
                     context.SaveChanges();
