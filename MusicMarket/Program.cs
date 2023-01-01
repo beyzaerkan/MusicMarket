@@ -3,33 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using MusicMarket.Models;
 using Microsoft.Extensions.FileProviders;
 using MusicMarket.Data;
-using AspNetCoreMultilingual.Middlewares;
-using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllersWithViews()
-                .AddViewLocalization();
-
-builder.Services.AddLocalization(options =>
-{
-    options.ResourcesPath = "Resources";
-});
-
-builder.Services.Configure<RequestLocalizationOptions>(options =>
-{
-    options.DefaultRequestCulture = new("en-US");
-
-    CultureInfo[] cultures = new CultureInfo[]
-    {
-        new("tr-TR"),
-        new("en-US"),
-    };
-
-    options.SupportedCultures = cultures;
-    options.SupportedUICultures = cultures;
-});
-
-builder.Services.AddScoped<RequestLocalizationCookiesMiddleware>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DataContext>(
@@ -63,8 +38,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseSession();
-app.UseRequestLocalization();
-app.UseRequestLocalizationCookies();
+
 app.UseRouting();
 app.UseAuthentication(); ;
 app.UseAuthorization();

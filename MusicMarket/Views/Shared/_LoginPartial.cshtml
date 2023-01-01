@@ -1,17 +1,16 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using MusicMarket.Models
-@using Microsoft.AspNetCore.Mvc.Localization
-@inject IViewLocalizer Localizer
+
 @inject SignInManager<MusicMarketUser> SignInManager
 @inject UserManager<MusicMarketUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="dropdown">
-        <a id="manage" class="nav-link text-dark" asp-controller="Account" asp-action="Profile" title="Manage">@Localizer["Hello"] @UserManager.GetUserName(User)!</a>
+        <a id="manage" class="nav-link text-dark" asp-controller="Account" asp-action="Profile"  title="Manage">Hello @UserManager.GetUserName(User)!</a>
     </li>
     <li class="dropdown">
-        <a class="nav-link text-dark" id="logout" asp-controller="Account" asp-action="Logout">@Localizer["Logout"]</a>
+        <a class="nav-link text-dark" id="logout" asp-controller="Account" asp-action="Logout">Logout</a>
     </li>
 }
 else
